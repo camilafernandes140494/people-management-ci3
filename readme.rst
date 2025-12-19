@@ -96,4 +96,4 @@ docker-compose.yml
 
 ## Licença
 
-Projeto criado para fins de estudo e avaliação técnica.
+Projeto criado para fins de estudo.
