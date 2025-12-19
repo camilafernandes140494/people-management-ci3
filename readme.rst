@@ -1,71 +1,99 @@
-###################
-What is CodeIgniter
-###################
+# People Management – CodeIgniter 3 + Docker
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Sistema simples de gestão de pessoas e cargos, desenvolvido como desafio técnico utilizando PHP com CodeIgniter 3, PostgreSQL, Docker e Bootstrap.
 
-*******************
-Release Information
-*******************
+## Tecnologias utilizadas
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+PHP 7.4  
+CodeIgniter 3  
+PostgreSQL  
+Docker e Docker Compose  
+Apache  
+Bootstrap 5  
 
-**************************
-Changelog and New Features
-**************************
+## Funcionalidades
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- CRUD de Pessoas
+- CRUD de Cargos (Roles)
+- Estrutura preparada para vínculo de cargo por pessoa
+- Interface com Bootstrap
+- Arquitetura MVC utilizando CodeIgniter 3
+- Ambiente totalmente containerizado com Docker
 
-*******************
-Server Requirements
-*******************
+## Pré-requisitos
 
-PHP version 5.6 or newer is recommended.
+É necessário ter instalado na máquina:
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+- Docker
+- Docker Compose
 
-************
-Installation
-************
+Para verificar:
+docker --version
+docker compose version
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
 
-*******
-License
-*******
+## Como rodar o projeto
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+Clone o repositório:
 
-*********
-Resources
-*********
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+git clone <url-do-repositorio>
+cd people-management-ci3
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
 
-***************
-Acknowledgement
-***************
+Suba os containers:
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+
+docker compose up -d --build
+
+
+A aplicação ficará disponível em:
+
+
+http://localhost:8080
+
+
+## Banco de dados
+
+O projeto utiliza PostgreSQL com as seguintes configurações:
+
+Host: db  
+Porta: 5432  
+Database: people_management  
+Usuário: postgres  
+Senha: postgres  
+
+A estrutura de tabelas pode ser criada a partir do arquivo:
+
+
+/database/schema.sql
+
+
+## Estrutura do projeto
+
+
+
+application/
+controllers/
+models/
+views/
+config/
+
+docker/
+php/
+postgres/
+
+system/
+index.php
+docker-compose.yml
+
+
+## Observações
+
+- O projeto não utiliza Composer, portanto os arquivos do framework CodeIgniter estão versionados.
+- Os dados do banco são persistidos via volume Docker e não são versionados.
+- O ambiente pode ser reproduzido facilmente em qualquer máquina com Docker instalado.
+
+## Licença
+
+Projeto criado para fins de estudo e avaliação técnica.
