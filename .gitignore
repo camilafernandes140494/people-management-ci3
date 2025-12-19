@@ -1,0 +1,38 @@
+# =====================
+# CodeIgniter
+# =====================
+/application/cache/*
+!/application/cache/index.html
+
+/application/logs/*
+!/application/logs/index.html
+
+# =====================
+# Environment / Secrets
+# =====================
+.env
+
+# =====================
+# Vendor (se não usar composer)
+# =====================
+/vendor/
+
+# =====================
+# Docker
+# =====================
+docker/pgdata/
+docker/postgres/data/
+**/pgdata/
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =====================
+# Node (se não usar)
+# =====================
+node_modules/
