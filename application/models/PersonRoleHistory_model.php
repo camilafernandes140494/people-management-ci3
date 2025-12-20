@@ -14,6 +14,7 @@ class PersonRoleHistory_model extends CI_Model {
             ->row();
     }
 
+
     public function closeCurrentRole($history_id, $end_date)
     {
         return $this->db
@@ -22,6 +23,7 @@ class PersonRoleHistory_model extends CI_Model {
                 'end_date' => $end_date
             ]);
     }
+
 
     public function assignRole($person_id, $role_id, $start_date)
     {
@@ -32,6 +34,7 @@ class PersonRoleHistory_model extends CI_Model {
             'end_date'   => null
         ]);
     }
+
 
     // 👇 ESSE É O MÉTODO DO HISTÓRICO (SUA DÚVIDA)
     public function getByPerson($person_id)
@@ -56,6 +59,19 @@ class PersonRoleHistory_model extends CI_Model {
         $this->db->limit(1);
 
         return $this->db->get()->row();
+    }
+    
+    public function getActivePeopleByRole($role_id)
+    {
+        return $this->db
+            ->select('p.id, p.name, prh.start_date')
+            ->from('person_role_history prh')
+            ->join('people p', 'p.id = prh.person_id')
+            ->where('prh.role_id', $role_id)
+            ->where('prh.end_date IS NULL', null, false)
+            ->order_by('p.name', 'ASC')
+            ->get()
+            ->result();
     }
 
 }

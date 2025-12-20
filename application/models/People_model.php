@@ -36,5 +36,32 @@ class People_model extends CI_Model {
             ->result();
     }
 
+    public function getWithCurrentRole($filters = [])
+    {
+        $this->db
+            ->select('p.id, p.name, r.name as role_name')
+            ->from('people p')
+            ->join(
+                'person_role_history prh',
+                'prh.person_id = p.id AND prh.end_date IS NULL',
+                'left'
+            )
+            ->join('roles r', 'r.id = prh.role_id', 'left');
+
+        if (!empty($filters['name'])) {
+            $this->db->like('p.name', $filters['name']);
+        }
+
+        if (!empty($filters['role'])) {
+            $this->db->like('r.name', $filters['role']);
+        }
+
+        return $this->db
+            ->order_by('p.name', 'ASC')
+            ->get()
+            ->result();
+    }
+
+
 }
 

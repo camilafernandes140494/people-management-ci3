@@ -36,4 +36,6 @@ class Role_model extends CI_Model {
             ->where('id', $id)
             ->delete($this->table);
     }
+
+
 }

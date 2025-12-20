@@ -33,12 +33,21 @@ class Role extends CI_Controller {
 
     public function edit($id)
     {
+        $this->load->model('PersonRoleHistory_model');
+        $this->load->model('People_model');
+
         $data['role'] = $this->Role_model->find($id);
+        $data['people'] = $this->People_model->getAll();
+
+        // 👇 NOVO
+        $data['activePeople'] =
+            $this->PersonRoleHistory_model->getActivePeopleByRole($id);
 
         $this->load->view('templates/header', ['title' => 'Edit Role']);
         $this->load->view('roles/edit', $data);
         $this->load->view('templates/footer');
     }
+
 
     public function update($id)
     {
@@ -51,4 +60,33 @@ class Role extends CI_Controller {
         $this->Role_model->delete($id);
         redirect('role');
     }
+    public function assignPerson($role_id)
+    {
+        $person_id  = $this->input->post('person_id');
+        $start_date = $this->input->post('start_date');
+
+        // carrega o model de histórico
+        $this->load->model('PersonRoleHistory_model');
+
+        // verifica se a pessoa já tem cargo ativo
+        $currentRole = $this->PersonRoleHistory_model
+            ->getCurrentRole($person_id);
+
+        // encerra o cargo atual
+        if ($currentRole) {
+            $this->PersonRoleHistory_model
+                ->closeCurrentRole($currentRole->id, $start_date);
+        }
+
+        // cria novo vínculo
+        $this->PersonRoleHistory_model->assignRole(
+            $person_id,
+            $role_id,
+            $start_date
+        );
+
+        redirect('role/edit/'.$role_id);
+    }
+
+    
 }
