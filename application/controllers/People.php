@@ -92,5 +92,27 @@ class People extends CI_Controller {
 
         redirect('people/edit/' . $person_id);
     }
+    
+    public function editHistory($history_id)
+    {
+        $data['history'] = $this->PersonRoleHistory_model->find($history_id);
+
+        $this->load->view('templates/header', ['title' => 'Editar Histórico']);
+        $this->load->view('people/edit_history', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function updateHistory($history_id)
+    {
+        $data = [
+            'start_date' => $this->input->post('start_date'),
+            'end_date'   => $this->input->post('end_date') ?: null
+        ];
+
+        $this->PersonRoleHistory_model->updateHistory($history_id, $data);
+
+        redirect($this->input->post('redirect_to'));
+    }
+
 
 }

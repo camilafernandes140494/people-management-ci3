@@ -74,4 +74,20 @@ class PersonRoleHistory_model extends CI_Model {
             ->result();
     }
 
+    public function find($id)
+    {
+        return $this->db
+            ->where('id', $id)
+            ->get($this->table)
+            ->row();
+    }
+
+    public function updateHistory($id, $data)
+    {
+        return $this->db
+            ->where('id', $id)
+            ->update($this->table, $data);
+    }
+
+
 }

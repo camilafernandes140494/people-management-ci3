@@ -76,6 +76,7 @@
             <th>Cargo</th>
             <th>Início</th>
             <th>Fim</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -84,10 +85,17 @@
                 <td><?= $item->role_name ?></td>
                 <td><?= $item->start_date ?></td>
                 <td><?= $item->end_date ?? 'Atual' ?></td>
+                <td>
+                    <a href="<?= site_url('people/editHistory/'.$item->id) ?>"
+                       class="btn btn-sm btn-warning">
+                        Editar
+                    </a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+
 
 </div>
 
