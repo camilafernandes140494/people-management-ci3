@@ -7,17 +7,17 @@
 <body>
 
 <div class="container mt-4">
-    <h1>New Role</h1>
+    <h1>Novo Cargo</h1>
 
     <form action="<?= site_url('role/store') ?>" method="post">
 
         <div class="mb-3">
-            <label class="form-label">Role name</label>
+            <label class="form-label">Nome do cargo</label>
             <input type="text" name="name" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a href="<?= site_url('role') ?>" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="<?= site_url('role') ?>" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
 

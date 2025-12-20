@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pessoas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
 <div class="container mt-4">
     <h1>Pessoas</h1>
 
@@ -13,11 +5,12 @@
         Nova Pessoa
     </a>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Cargo Atual</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -26,19 +19,21 @@
                 <tr>
                     <td><?= $person->name ?></td>
                     <td><?= $person->email ?></td>
+                    <td><?= $person->current_role ?></td>
                     <td>
-                        <a href="<?= site_url('people/edit/'.$person->id) ?>" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="<?= site_url('people/delete/'.$person->id) ?>" 
+                        <a href="<?= site_url('people/edit/'.$person->id) ?>"
+                           class="btn btn-sm btn-warning">
+                           Editar
+                        </a>
+                           <a href="<?= site_url('people/delete/'.$person->id) ?>" 
                            class="btn btn-sm btn-danger"
                            onclick="return confirm('Deseja excluir?')">
                            Excluir
                         </a>
                     </td>
                 </tr>
-            <?php endforeach ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
+    
 </div>
-
-</body>
-</html>

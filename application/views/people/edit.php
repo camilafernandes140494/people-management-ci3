@@ -38,6 +38,57 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a href="<?= site_url('people') ?>" class="btn btn-secondary">Voltar</a>
     </form>
+    <hr>
+
+<h4>Vincular novo cargo</h4>
+
+<form method="post" action="<?= site_url('people/assignRole/'.$person->id) ?>">
+
+    <div class="mb-3">
+        <label class="form-label">Cargo</label>
+        <select name="role_id" class="form-select" required>
+            <option value="">Selecione</option>
+            <?php foreach ($roles as $role): ?>
+                <option value="<?= $role->id ?>">
+                    <?= $role->name ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Data de início</label>
+        <input type="date" name="start_date" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Vincular Cargo
+    </button>
+
+</form>
+<hr>
+
+<h4>Histórico de Cargos</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cargo</th>
+            <th>Início</th>
+            <th>Fim</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($history as $item): ?>
+            <tr>
+                <td><?= $item->role_name ?></td>
+                <td><?= $item->start_date ?></td>
+                <td><?= $item->end_date ?? 'Atual' ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
 </div>
 
 </body>

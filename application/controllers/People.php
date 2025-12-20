@@ -7,14 +7,29 @@ class People extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('People_model');
+        $this->load->model('PersonRoleHistory_model');
+
     }
 
     public function index()
     {
-        $data['people'] = $this->People_model->getAll();
-        $this->load->view('people/index', $data);
-    }
+        $people = $this->People_model->getAll();
 
+        foreach ($people as $person) {
+            $currentRole = $this->PersonRoleHistory_model
+                ->getCurrentRoleByPerson($person->id);
+
+            $person->current_role = $currentRole
+                ? $currentRole->name
+                : 'Sem cargo';
+        }
+
+        $data['people'] = $people;
+
+        $this->load->view('templates/header', ['title' => 'People']);
+        $this->load->view('people/index', $data);
+        $this->load->view('templates/footer');
+    }
     public function create()
     {
         $this->load->view('people/create');
@@ -26,11 +41,21 @@ class People extends CI_Controller {
         redirect('people');
     }
 
-    public function edit($id)
-    {
-        $data['person'] = $this->People_model->find($id);
-        $this->load->view('people/edit', $data);
-    }
+public function edit($id)
+{
+    $this->load->model('Role_model');
+
+    $data['person']  = $this->People_model->find($id);
+    $data['roles']   = $this->Role_model->getAll();
+
+    // 👉 AQUI
+    $data['history'] = $this->PersonRoleHistory_model->getByPerson($id);
+
+    $this->load->view('templates/header', ['title' => 'Edit Person']);
+    $this->load->view('people/edit', $data);
+    $this->load->view('templates/footer');
+}
+
 
     public function update($id)
     {
@@ -43,4 +68,31 @@ class People extends CI_Controller {
         $this->People_model->delete($id);
         redirect('people');
     }
+    
+    public function assignRole($person_id)
+{
+    $role_id    = $this->input->post('role_id');
+    $start_date = $this->input->post('start_date');
+
+    // 1. Verifica se existe cargo ativo
+    $currentRole = $this->PersonRoleHistory_model->getCurrentRole($person_id);
+
+    // 2. Se existir, encerra
+    if ($currentRole) {
+        $this->PersonRoleHistory_model->closeCurrentRole(
+            $currentRole->id,
+            $start_date
+        );
+    }
+
+    // 3. Cria novo vínculo
+    $this->PersonRoleHistory_model->assignRole(
+        $person_id,
+        $role_id,
+        $start_date
+    );
+
+    redirect('people/edit/' . $person_id);
+}
+
 }

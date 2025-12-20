@@ -22,5 +22,19 @@ class People_model extends CI_Model {
     public function delete($id) {
         return $this->db->where('id', $id)->delete('people');
     }
+
+    public function countAll()
+    {
+        return $this->db->count_all('people');
+    }
+
+    public function getPaginated($limit, $offset)
+    {
+        return $this->db
+            ->limit($limit, $offset)
+            ->get('people')
+            ->result();
+    }
+
 }
 

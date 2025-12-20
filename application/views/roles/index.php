@@ -1,14 +1,14 @@
-<h1>Roles</h1>
+<h1>Cargos</h1>
 
 <a href="<?= site_url('role/create') ?>" class="btn btn-primary mb-3">
-    New Role
+    Novo Cargo
 </a>
 
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th width="180">Actions</th>
+            <th>Nome</th>
+            <th width="180">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -17,12 +17,12 @@
                 <td><?= $role->name ?></td>
                 <td>
                     <a href="<?= site_url('role/edit/'.$role->id) ?>" class="btn btn-warning btn-sm">
-                        Edit
+                        Editar
                     </a>
                     <a href="<?= site_url('role/delete/'.$role->id) ?>"
                        class="btn btn-danger btn-sm"
                        onclick="return confirm('Delete this role?')">
-                        Delete
+                        Excluir
                     </a>
                 </td>
             </tr>
