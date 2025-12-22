@@ -1,23 +1,22 @@
 <?php $this->load->view('templates/header'); ?>
 
 
-    <div class="d-flex align-items-center gap-3 mb-4 ">
+<div class="d-flex align-items-center gap-3 mb-4 ">
 
-        <a
-            href="<?= site_url('people') ?>"
-            class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
-            style="width:40px; height:40px;"
-            title="Voltar para a tela inicial"
-        >
-            <i class="bi bi-arrow-left"></i>
-        </a>
+    <a
+        href="<?= site_url('people') ?>"
+        class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+        style="width:40px; height:40px;"
+        title="Voltar para a tela inicial">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 
-        <div>
-    <h1 class="display-6 fw-bold">Cadastrar Pessoa</h1>
-    <p class="text-muted">Informe os dados básicos para criar um novo cadastro</p>
-        </div>
-
+    <div>
+        <h1 class="display-6 fw-bold">Cadastrar Pessoa</h1>
+        <p class="text-muted">Informe os dados básicos para criar um novo cadastro</p>
     </div>
+
+</div>
 
 <div class="row justify-content-center">
     <div class="col-lg-6">
@@ -39,8 +38,7 @@
                             name="name"
                             class="form-control form-control-lg"
                             placeholder="Nome completo"
-                            required
-                        >
+                            required>
                     </div>
 
                     <div class="mb-3">
@@ -50,8 +48,7 @@
                             name="email"
                             class="form-control form-control-lg"
                             placeholder="email@exemplo.com"
-                            required
-                        >
+                            required>
                     </div>
 
                     <div class="row">
@@ -60,8 +57,7 @@
                             <input
                                 type="date"
                                 name="birth_date"
-                                class="form-control"
-                            >
+                                class="form-control">
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -70,14 +66,13 @@
                                 type="text"
                                 name="phone"
                                 class="form-control"
-                                placeholder="(00) 00000-0000"
-                            >
+                                placeholder="(00) 00000-0000">
                         </div>
                     </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="bi bi-check-circle me-1"></i> Salvar
-                        </button>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-check-circle me-1"></i> Salvar
+                    </button>
 
                 </form>
 

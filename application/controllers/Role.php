@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Role extends CI_Controller {
+class Role extends CI_Controller
+{
 
     public function __construct()
     {
@@ -85,8 +86,6 @@ class Role extends CI_Controller {
             $start_date
         );
 
-        redirect('role/edit/'.$role_id);
+        redirect('role/edit/' . $role_id);
     }
-
-    
 }

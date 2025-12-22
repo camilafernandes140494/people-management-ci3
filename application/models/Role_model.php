@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Role_model extends CI_Model {
+class Role_model extends CI_Model
+{
 
     protected $table = 'roles';
 
@@ -36,6 +37,4 @@ class Role_model extends CI_Model {
             ->where('id', $id)
             ->delete($this->table);
     }
-
-
 }

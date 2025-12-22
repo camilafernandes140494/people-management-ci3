@@ -9,8 +9,7 @@
             href="<?= site_url('/') ?>"
             class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
             style="width:40px; height:40px;"
-            title="Voltar para a tela inicial"
-        >
+            title="Voltar para a tela inicial">
             <i class="bi bi-arrow-left"></i>
         </a>
 
@@ -48,23 +47,27 @@
                         <td class="text-center">
                             <div class="btn-group" role="group">
                                 <a
-                                    href="<?= site_url('role/edit/'.$role->id) ?>"
+                                    href="<?= site_url('role/edit/' . $role->id) ?>"
                                     class="btn btn-sm btn-warning"
-                                    title="Editar"
-                                >
+                                    title="Editar">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
 
-                                <a
-                                    href="<?= site_url('role/delete/'.$role->id) ?>"
-                                    class="btn btn-sm btn-danger"
-                                    title="Excluir"
-                                    onclick="return confirm('Deseja realmente excluir este cargo?')"
-                                >
+
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-danger btn-delete"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal"
+                                    data-url="<?= site_url('role/delete/' . $role->id) ?>"
+                                    data-title="Excluir cargo"
+                                    data-message="Deseja realmente excluir o cargo <strong><?= $role->name ?></strong>?">
                                     <i class="bi bi-trash"></i>
-                                </a>
+                                </button>
+
                             </div>
                         </td>
+
                     </tr>
                 <?php endforeach ?>
             <?php else: ?>

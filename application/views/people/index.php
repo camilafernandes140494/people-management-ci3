@@ -8,8 +8,7 @@
             href="<?= site_url('/') ?>"
             class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
             style="width:40px; height:40px;"
-            title="Voltar para a tela inicial"
-        >
+            title="Voltar para a tela inicial">
             <i class="bi bi-arrow-left"></i>
         </a>
 
@@ -52,23 +51,26 @@
                         <td class="text-center">
                             <div class="btn-group" role="group">
                                 <a
-                                    href="<?= site_url('people/edit/'.$person->id) ?>"
+                                    href="<?= site_url('people/edit/' . $person->id) ?>"
                                     class="btn btn-sm btn-warning"
-                                    title="Editar"
-                                >
+                                    title="Editar">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
 
-                                <a
-                                    href="<?= site_url('people/delete/'.$person->id) ?>"
-                                    class="btn btn-sm btn-danger"
-                                    title="Excluir"
-                                    onclick="return confirm('Deseja realmente excluir esta pessoa?')"
-                                >
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-danger btn-delete"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeleteModal"
+                                    data-url="<?= site_url('people/delete/' . $person->id) ?>"
+                                    data-title="Excluir pessoa"
+                                    data-message="Tem certeza que deseja excluir <strong><?= $person->name ?></strong>?">
                                     <i class="bi bi-trash"></i>
-                                </a>
+                                </button>
+
                             </div>
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -81,5 +83,7 @@
         </tbody>
     </table>
 </div>
+
+
 
 <?php $this->load->view('templates/footer'); ?>

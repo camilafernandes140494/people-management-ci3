@@ -1,14 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class People extends CI_Controller {
+class People extends CI_Controller
+{
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('People_model');
         $this->load->model('PersonRoleHistory_model');
-
     }
 
     public function index()
@@ -65,8 +65,8 @@ class People extends CI_Controller {
         $this->People_model->delete($id);
         redirect('people');
     }
-    
-   
+
+
     public function assignRole($person_id)
     {
         $role_id    = $this->input->post('role_id');
@@ -92,7 +92,7 @@ class People extends CI_Controller {
 
         redirect('people/edit/' . $person_id);
     }
-    
+
     public function editHistory($history_id)
     {
         $data['history'] = $this->PersonRoleHistory_model->find($history_id);
@@ -113,6 +113,4 @@ class People extends CI_Controller {
 
         redirect($this->input->post('redirect_to'));
     }
-
-
 }

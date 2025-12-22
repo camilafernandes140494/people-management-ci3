@@ -8,15 +8,14 @@
             href="<?= site_url('role') ?>"
             class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
             style="width:40px; height:40px;"
-            title="Voltar para cargos"
-        >
+            title="Voltar para cargos">
             <i class="bi bi-arrow-left"></i>
         </a>
 
-            <h1 class="display-6 fw-bold mb-1">Editar Cargo</h1>
-            <p class="text-muted mb-0">
-                Atualize o nome do cargo e gerencie vínculos
-            </p>
+        <h1 class="display-6 fw-bold mb-1">Editar Cargo</h1>
+        <p class="text-muted mb-0">
+            Atualize o nome do cargo e gerencie vínculos
+        </p>
 
     </div>
 
@@ -33,7 +32,7 @@
                     Dados do cargo
                 </h5>
 
-                <form action="<?= site_url('role/update/'.$role->id) ?>" method="post">
+                <form action="<?= site_url('role/update/' . $role->id) ?>" method="post">
 
                     <div class="mb-4">
                         <label class="form-label">Nome do cargo</label>
@@ -42,13 +41,12 @@
                             name="name"
                             class="form-control form-control-lg"
                             value="<?= $role->name ?>"
-                            required
-                        >
+                            required>
                     </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="bi bi-save me-1"></i> Salvar
-                        </button>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-save me-1"></i> Salvar
+                    </button>
 
 
                 </form>
@@ -66,7 +64,7 @@
                     Vincular pessoa ao cargo
                 </h5>
 
-                <form method="post" action="<?= site_url('role/assignPerson/'.$role->id) ?>">
+                <form method="post" action="<?= site_url('role/assignPerson/' . $role->id) ?>">
 
                     <div class="mb-3">
                         <label class="form-label">Pessoa</label>

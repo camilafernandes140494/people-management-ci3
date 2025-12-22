@@ -1,39 +1,38 @@
 <?php $this->load->view('templates/header'); ?>
 
 
-    <div class="d-flex align-items-center gap-3 mb-4 ">
+<div class="d-flex align-items-center gap-3 mb-4 ">
 
-        <a
-            href="<?= site_url('people') ?>"
-            class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
-            style="width:40px; height:40px;"
-            title="Voltar para a tela inicial"
-        >
-            <i class="bi bi-arrow-left"></i>
-        </a>
+    <a
+        href="<?= site_url('people') ?>"
+        class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+        style="width:40px; height:40px;"
+        title="Voltar para a tela inicial">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 
-        <div>
-            <h1 class="display-6 fw-bold mb-1">Editar Pessoa</h1>
-            <p class="text-muted mb-0">
-                Atualize os dados pessoais e gerencie os cargos vinculados
-            </p>
-        </div>
-
+    <div>
+        <h1 class="display-6 fw-bold mb-1">Editar Pessoa</h1>
+        <p class="text-muted mb-0">
+            Atualize os dados pessoais e gerencie os cargos vinculados
+        </p>
     </div>
+
+</div>
 
 <div class="row g-4">
 
     <!-- Dados da pessoa -->
     <div class="col-lg-6">
         <div class="card shadow-sm h-100">
- 
+
             <div class="card-body">
                 <h5 class="card-title mb-3">
                     <i class="bi bi-person-lines-fill me-2"></i>
                     Dados pessoais
                 </h5>
 
-                <form action="<?= site_url('people/update/'.$person->id) ?>" method="post">
+                <form action="<?= site_url('people/update/' . $person->id) ?>" method="post">
                     <div class="mb-3">
                         <label class="form-label">Nome</label>
                         <input
@@ -41,8 +40,7 @@
                             name="name"
                             class="form-control form-control-lg"
                             value="<?= $person->name ?>"
-                            required
-                        >
+                            required>
                     </div>
 
                     <div class="mb-3">
@@ -52,8 +50,7 @@
                             name="email"
                             class="form-control form-control-lg"
                             value="<?= $person->email ?>"
-                            required
-                        >
+                            required>
                     </div>
 
                     <div class="row">
@@ -63,8 +60,7 @@
                                 type="date"
                                 name="birth_date"
                                 class="form-control"
-                                value="<?= $person->birth_date ?>"
-                            >
+                                value="<?= $person->birth_date ?>">
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -73,15 +69,14 @@
                                 type="text"
                                 name="phone"
                                 class="form-control"
-                                value="<?= $person->phone ?>"
-                            >
+                                value="<?= $person->phone ?>">
                         </div>
                     </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="bi bi-save me-1"></i> Salvar
-                        </button>
-                
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-save me-1"></i> Salvar
+                    </button>
+
                 </form>
             </div>
         </div>
@@ -96,7 +91,7 @@
                     Vincular novo cargo
                 </h5>
 
-                <form method="post" action="<?= site_url('people/assignRole/'.$person->id) ?>">
+                <form method="post" action="<?= site_url('people/assignRole/' . $person->id) ?>">
                     <div class="mb-3">
                         <label class="form-label">Cargo</label>
                         <select name="role_id" class="form-select form-select-lg" required>
@@ -150,9 +145,8 @@
                             <td><?= $item->end_date ?? 'Atual' ?></td>
                             <td class="text-center">
                                 <a
-                                    href="<?= site_url('people/editHistory/'.$item->id) ?>"
-                                    class="btn btn-sm btn-warning"
-                                >
+                                    href="<?= site_url('people/editHistory/' . $item->id) ?>"
+                                    class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                             </td>
