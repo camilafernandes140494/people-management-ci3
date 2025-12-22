@@ -65,6 +65,7 @@
                             <input
                                 type="text"
                                 name="phone"
+                                id="phone"
                                 class="form-control"
                                 placeholder="(00) 00000-0000">
                         </div>

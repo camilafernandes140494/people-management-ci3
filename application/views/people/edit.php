@@ -66,6 +66,7 @@
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Telefone</label>
                             <input
+                                id="phone"
                                 type="text"
                                 name="phone"
                                 class="form-control"
@@ -141,7 +142,9 @@
                     <?php foreach ($history as $item): ?>
                         <tr>
                             <td><?= $item->role_name ?></td>
-                            <td><?= $item->start_date ?></td>
+                            <td>
+                                <?= date('d/m/Y', strtotime($item->start_date)) ?>
+                            </td>
                             <td><?= $item->end_date ?? 'Atual' ?></td>
                             <td class="text-center">
                                 <a
