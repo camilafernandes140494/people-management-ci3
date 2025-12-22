@@ -1,22 +1,19 @@
 <?php $this->load->view('templates/header'); ?>
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
-    <div class="d-flex align-items-center gap-3">
+<div class="d-flex align-items-center gap-3 mb-4 ">
 
-        <a
-            href="<?= site_url('role') ?>"
-            class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
-            style="width:40px; height:40px;"
-            title="Voltar para cargos">
-            <i class="bi bi-arrow-left"></i>
-        </a>
+    <a
+        href="<?= site_url('role') ?>"
+        class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
+        style="width:40px; height:40px;"
+        title="Voltar para a tela inicial">
+        <i class="bi bi-arrow-left"></i>
+    </a>
 
-        <h1 class="display-6 fw-bold mb-1">Editar Cargo</h1>
-        <p class="text-muted mb-0">
-            Atualize o nome do cargo e gerencie vínculos
-        </p>
-
+    <div>
+        <h1 class="display-6 fw-bold">Editar Cargo</h1>
+        <p class="text-muted">Atualize o nome do cargo e gerencie vínculos</p>
     </div>
 
 </div>

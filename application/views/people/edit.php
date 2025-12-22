@@ -4,7 +4,7 @@
 <div class="d-flex align-items-center gap-3 mb-4 ">
 
     <a
-        href="javascript:history.back()"
+        href="<?= site_url('home') ?>"
         class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
         style="width:40px; height:40px;"
         title="Voltar para a tela inicial">
