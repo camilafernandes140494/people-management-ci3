@@ -23,8 +23,7 @@
             name="name"
             class="form-control form-control-lg"
             placeholder="Buscar por nome"
-            value="<?= $this->input->get('name') ?>"
-        >
+            value="<?= $this->input->get('name') ?>">
     </div>
     <div class="col-md-4">
         <input
@@ -32,8 +31,7 @@
             name="role"
             class="form-control form-control-lg"
             placeholder="Buscar por cargo"
-            value="<?= $this->input->get('role') ?>"
-        >
+            value="<?= $this->input->get('role') ?>">
     </div>
     <div class="col-md-2 d-grid">
         <button type="submit" class="btn btn-primary btn-lg">
@@ -58,13 +56,13 @@
             </tr>
         </thead>
         <tbody>
-            <?php if(!empty($people)): ?>
+            <?php if (!empty($people)): ?>
                 <?php foreach ($people as $person): ?>
                     <tr>
                         <td><?= $person->name ?></td>
                         <td><?= $person->role_name ?? 'Sem cargo' ?></td>
                         <td class="text-center">
-                            <a href="<?= site_url('people/edit/'.$person->id) ?>" class="btn btn-sm btn-warning">
+                            <a href="<?= site_url('people/edit/' . $person->id) ?>" class="btn btn-sm btn-warning">
                                 <i class="bi bi-pencil-square me-1"></i> Editar
                             </a>
                         </td>
@@ -77,6 +75,15 @@
             <?php endif; ?>
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-between align-items-center m-2">
+        <small class="text-muted">
+            Mostrando <?= $start ?>–<?= $end ?> de <?= $total ?> registros
+        </small>
+
+        <?= $links ?>
+    </div>
+
 </div>
 
 <?php $this->load->view('templates/footer'); ?>

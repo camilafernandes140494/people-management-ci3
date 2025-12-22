@@ -79,6 +79,13 @@
             <?php endif; ?>
         </tbody>
     </table>
+    <div class="d-flex justify-content-between align-items-center m-2">
+        <small class="text-muted">
+            Mostrando <?= $start ?>–<?= $end ?> de <?= $total ?> registros
+        </small>
+
+        <?= $links ?>
+    </div>
 </div>
 
 <?php $this->load->view('templates/footer'); ?>

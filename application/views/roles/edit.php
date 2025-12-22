@@ -116,7 +116,9 @@
                     <?php foreach ($activePeople as $person): ?>
                         <tr>
                             <td><?= $person->name ?></td>
-                            <td><?= $person->start_date ?></td>
+                            <td>
+                                <?= date('d/m/Y', strtotime($person->start_date)) ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

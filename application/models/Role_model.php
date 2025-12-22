@@ -37,4 +37,18 @@ class Role_model extends CI_Model
             ->where('id', $id)
             ->delete($this->table);
     }
+
+    public function getPaginated($limit, $offset)
+    {
+        return $this->db
+            ->limit($limit, $offset)
+            ->order_by('name', 'ASC')
+            ->get('roles')
+            ->result();
+    }
+
+    public function countAll()
+    {
+        return $this->db->count_all('roles');
+    }
 }

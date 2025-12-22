@@ -13,23 +13,45 @@ class People extends CI_Controller
 
     public function index()
     {
-        $people = $this->People_model->getAll();
+        $this->load->model('People_model');
+        $this->load->library('pagination');
 
-        foreach ($people as $person) {
-            $currentRole = $this->PersonRoleHistory_model
-                ->getCurrentRoleByPerson($person->id);
+        $limit = 5;
 
-            $person->current_role = $currentRole
-                ? $currentRole->name
-                : 'Sem cargo';
-        }
+        $page = max(1, (int) $this->uri->segment(3));
+        $offset = ($page - 1) * $limit;
 
-        $data['people'] = $people;
+        $total = $this->People_model->countAll();
 
-        $this->load->view('templates/header', ['title' => 'People']);
+        $config['base_url'] = site_url('people/index');
+        $config['total_rows'] = $total;
+        $config['per_page'] = $limit;
+        $config['use_page_numbers'] = true;
+        $config['uri_segment'] = 3;
+
+        // Bootstrap 5
+        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['attributes'] = ['class' => 'page-link'];
+        $config['prev_link'] = '&laquo;';
+        $config['next_link'] = '&raquo;';
+
+        $this->pagination->initialize($config);
+
+        $data['people'] = $this->People_model->getPaginated($limit, $offset);
+        $data['links']  = $this->pagination->create_links();
+
+        $data['total'] = $total;
+        $data['start'] = $total > 0 ? ($offset + 1) : 0;
+        $data['end']   = min($offset + $limit, $total);
+
         $this->load->view('people/index', $data);
-        $this->load->view('templates/footer');
     }
+
     public function create()
     {
         $this->load->view('people/create');
